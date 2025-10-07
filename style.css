@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "figtree";
+  color: whitesmoke;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(10, 10, 10) var(--bg_darklue_dark);
+  height: calc(100vh - 96px);
+  overflow-y: auto;
+  justify-content: space-between;
+}
