@@ -6,32 +6,52 @@
   <title>Fotogram Galerie</title>
 
   <script src="./script.js"></script>
-  <style>
-    .single_element{
-      color: white;
-      font-size: 12px;
-      padding: 16px;
-      background-color: rgb(40, 39, 42);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- SVG für moderne Browser -->
+  <link rel="icon" href="./imgs/favicon/favicon.svg" type="image/svg+xml">
+
+  <!-- PNG als Fallback -->
+  <link rel="icon" href="./imgs/favicon/favicon.png" type="image/png" sizes="32x32">
+
+    
 </head>
-<body onload="init()">
+
+<body>
   <!-- Page header -->
-  <header>
-   <h1>Fotogram Galerie</h1>
+  <header class="page-header">
+    <div class="top-bar">
+      <img src="./imgs/logo/Fotogram_Logo.svg" class="logo" alt="Fotogram Logo">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a> </li>
+          <li><a href="#about">About</a> </li>
+          <li><a href="#contact">Contact</a> </li>
+        </ul>
+      </nav>
+    </div>
+
+
    <div class="single_element">
 
    </div> 
+   
   </header>
+  
+  <h1>Fotogram Galerie</h1>
+
   <!-- Main content -->
   <main>
-    <section>
-      
+    <section class="gallery" id="gallery">
+    <!-- Bilder werden hier von JS eingefügt -->
     </section>
   </main>
   <!-- Page footer -->
-  <footer>
-    
+  <footer class="page-footer">
+    <p>&copy; 2025 Fotogram Galerie. Alle Rechte vorbehalten.</p>
+    <a href="#datenschutz">Datenschutz</a>
+    <a href="#impressumm">Impressum</a>
   </footer>
+  
 </body>
 </html>
