@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fotogram Galerie</title>
-
-  <script src="./script.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <title>Fotogram Galerie - Ihre Bildergalerie</title>
+  <meta name="description" content="Entdecken Sie unsere wunderschöne Fotogalerie mit atemberaubenden Landschafts- und Naturfotos">
 
   <!-- SVG für moderne Browser -->
   <link rel="icon" href="./imgs/favicon/favicon.svg" type="image/svg+xml">
@@ -14,44 +12,67 @@
   <!-- PNG als Fallback -->
   <link rel="icon" href="./imgs/favicon/favicon.png" type="image/png" sizes="32x32">
 
-    
+  <link rel="stylesheet" href="style.css">
+  <script src="./script.js" defer></script>
 </head>
 
 <body>
-  <!-- Page header -->
-  <header class="page-header">
+  <!-- Header -->
+  <header class="page-header" role="banner">
     <div class="top-bar">
-      <img src="./imgs/logo/Fotogram_Logo.svg" class="logo" alt="Fotogram Logo">
-      <nav>
-        <ul class="nav-links">
-          <li><a href="#home">Home</a> </li>
-          <li><a href="#about">About</a> </li>
-          <li><a href="#contact">Contact</a> </li>
+      <a href="index.html" class="logo-link" aria-label="Fotogram Startseite">
+        <img src="./imgs/logo/Fotogram_Logo.svg" class="logo" alt="Fotogram Logo" width="200" height="60">
+      </a>
+      <nav aria-label="Hauptnavigation">
+        <ul class="nav-links" role="menubar">
+          <li role="none"><a href="#home" role="menuitem">Home</a></li>
+          <li role="none"><a href="#about" role="menuitem">About</a></li>
+          <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
         </ul>
       </nav>
     </div>
-
-
-   <div class="single_element">
-
-   </div> 
-   
   </header>
-  
-  <h1>Fotogram Galerie</h1>
 
-  <!-- Main content -->
-  <main>
-    <section class="gallery" id="gallery">
-    <!-- Bilder werden hier von JS eingefügt -->
+  <!-- Hauptinhalt -->
+  <main id="main" role="main">
+    <h1>Fotogram Galerie</h1>
+    <section class="gallery" id="gallery-container" aria-labelledby="gallery-heading">
+      <h2 id="gallery-heading" class="visually-hidden">Bildergalerie</h2>
+      <!-- Bilder werden hier von JavaScript eingefügt -->
     </section>
   </main>
-  <!-- Page footer -->
-  <footer class="page-footer">
+
+  <!-- Footer -->
+  <footer class="page-footer" role="contentinfo">
     <p>&copy; 2025 Fotogram Galerie. Alle Rechte vorbehalten.</p>
-    <a href="#datenschutz">Datenschutz</a>
-    <a href="#impressumm">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <a href="impressum.html">Impressum</a>
   </footer>
-  
+
+  <!-- Dialog für Großansicht -->
+  <dialog id="image-dialog" class="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+    <div class="dialog-content">
+      <form method="dialog">
+        <button class="close-btn" type="submit" aria-label="Dialog schließen">&times;</button>
+      </form>
+      <img id="dialog-image" src="" alt="" role="img">
+      <div class="dialog-caption">
+        <h3 id="dialog-title"></h3>
+        <p id="dialog-description"></p>
+      </div>
+      <div class="dialog-navigation">
+        <button class="nav-btn prev-btn" type="button" onclick="prevImage()" aria-label="Vorheriges Bild">
+          ‹
+        </button>
+        <button class="nav-btn next-btn" type="button" onclick="nextImage()" aria-label="Nächstes Bild">
+          ›
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ARIA Live Region für Screen Reader Ankündigungen -->
+  <div id="aria-live-announcer" aria-live="polite" aria-atomic="true" class="visually-hidden"></div>
+
 </body>
 </html>
