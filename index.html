@@ -6,10 +6,8 @@
   <title>Fotogram Galerie - Ihre Bildergalerie</title>
   <meta name="description" content="Entdecken Sie unsere wunderschöne Fotogalerie mit atemberaubenden Landschafts- und Naturfotos">
 
-  <!-- SVG für moderne Browser -->
   <link rel="icon" href="./imgs/favicon/favicon.svg" type="image/svg+xml">
 
-  <!-- PNG als Fallback -->
   <link rel="icon" href="./imgs/favicon/favicon.png" type="image/png" sizes="32x32">
 
   <link rel="stylesheet" href="style.css">
@@ -17,7 +15,6 @@
 </head>
 
 <body onload="init()">
-  <!-- Header -->
   <header class="page-header" role="banner">
     <div class="top-bar">
       <a href="index.html" class="logo-link" aria-label="Fotogram Startseite">
@@ -33,23 +30,19 @@
     </div>
   </header>
 
-  <!-- Hauptinhalt -->
   <main id="main" role="main">
     <h1>Fotogram Galerie</h1>
     <section class="gallery" id="gallery-container" aria-labelledby="gallery-heading">
       <h2 id="gallery-heading" class="visually-hidden">Bildergalerie</h2>
-      <!-- Bilder werden hier von JavaScript eingefügt -->
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="page-footer" role="contentinfo">
     <p>&copy; 2025 Fotogram Galerie. Alle Rechte vorbehalten.</p>
     <a href="datenschutz.html">Datenschutz</a>
     <a href="impressum.html">Impressum</a>
   </footer>
 
-  <!-- Dialog für Großansicht -->
   <dialog id="image-dialog" class="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
     <div class="dialog-content">
       <form method="dialog">
@@ -71,7 +64,6 @@
     </div>
   </dialog>
 
-  <!-- ARIA Live Region für Screen Reader Ankündigungen -->
   <div id="aria-live-announcer" aria-live="polite" aria-atomic="true" class="visually-hidden"></div>
 
 </body>

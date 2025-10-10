@@ -75,15 +75,12 @@ const GALLERY_ITEMS = [
 
 let currentImageIndex = 0;
 
-// ===== FUNKTIONEN =====
 
-// Initialisiert die Galerie wenn die Seite geladen wird
 function init() {
   renderGallery();
   setupEventListeners();
 }
 
-// Funktion erstellen die die später Bilder render soll
 function renderGallery(){
     const GALLERY_REF = document.getElementById("gallery-container");
 
@@ -102,7 +99,6 @@ function renderGallery(){
     }
 }
 
-// Öffnet den Dialog mit dem angeklickten Bild
 function openDialog(index) {
   currentImageIndex = index;
   const item = GALLERY_ITEMS[index];
@@ -117,13 +113,11 @@ function openDialog(index) {
   updateNavigationButtons();
 }
 
-// Schließt den Dialog
 function closeDialog() {
   const dialog = document.getElementById('image-dialog');
   dialog.close();
 }
 
-// Zeigt das nächste Bild an
 function nextImage() {
   if (currentImageIndex < GALLERY_ITEMS.length - 1) {
     currentImageIndex++;
@@ -131,7 +125,6 @@ function nextImage() {
   }
 }
 
-// Zeigt das vorherige Bild an
 function prevImage() {
   if (currentImageIndex > 0) {
     currentImageIndex--;
@@ -139,7 +132,6 @@ function prevImage() {
   }
 }
 
-// Aktualisiert den Dialog-Inhalt ohne den Dialog zu schließen
 function updateDialogContent() {
   const item = GALLERY_ITEMS[currentImageIndex];
   
@@ -151,7 +143,6 @@ function updateDialogContent() {
   updateNavigationButtons();
 }
 
-// Aktualisiert die Navigations-Buttons
 function updateNavigationButtons() {
   const prevBtn = document.querySelector('.prev-btn');
   const nextBtn = document.querySelector('.next-btn');
@@ -160,18 +151,11 @@ function updateNavigationButtons() {
   nextBtn.disabled = currentImageIndex === GALLERY_ITEMS.length - 1;
 }
 
-// Setzt Event-Listener auf
 function setupEventListeners() {
   const dialog = document.getElementById('image-dialog');
-  // Klick außerhalb des Dialogs schließt ihn (wird automatisch durch dialog-Element gehandelt)
   
-  // Tastatur-Navigation
   document.addEventListener('keydown', function(event) {
-    // const dialog = document.getElementById('image-dialog');
     if (dialog.open) {
-      // if (event.key === 'Escape') {
-      //   // Wird automatisch durch dialog-Element gehandelt
-      // }
       if (event.key === 'ArrowLeft') {
         prevImage();
       }
@@ -181,7 +165,6 @@ function setupEventListeners() {
     }
   });
 
-  // Einfache Lösung - Click auf den Dialog (nicht den Content)
   dialog.addEventListener('click', function(event) {
     const dialog = document.getElementById('image-dialog');
     if (event.target === dialog) {
@@ -190,8 +173,3 @@ function setupEventListeners() {
     }
   });
 }
-
-
-
-// // Initialisierung wenn die Seite geladen ist
-// document.addEventListener('DOMContentLoaded', init);

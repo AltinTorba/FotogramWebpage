@@ -1,6 +1,6 @@
-/* ===== BASIS STYLES ===== */
 * {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -15,7 +15,6 @@ body {
   line-height: 1.6;
 }
 
-/* ===== HEADER ===== */
 .page-header {
   padding: 10px 20px;
   background: #0c011342;
@@ -71,9 +70,8 @@ body {
   color: #ffd700;
 }
 
-/* ===== HAUPTINHALT ===== */
 main {
-  flex: 1; /* Nimmt verfügbaren Platz ein */
+  flex: 1; 
   padding: 16px;
   min-height: 70vh;
 }
@@ -143,7 +141,6 @@ main {
   text-decoration: underline;
 }
 
-/* ===== FOOTER ===== */
 .page-footer {
   display: flex;
   justify-content: center;
@@ -152,7 +149,7 @@ main {
   background: #f8f9fa;
   gap: 20px;
   border-top: 1px solid #ddd;
-  margin-top: auto; /* Sorgt dass Footer unten bleibt */
+  margin-top: auto; 
 }
 
 .page-footer a {
@@ -170,9 +167,7 @@ main {
   text-align: center;
 }
 
-/* ===== RESPONSIVE ===== */
 
-/* Tablets */
 @media (max-width: 768px) {
   .top-bar {
     flex-direction: column;
@@ -215,7 +210,6 @@ main {
   }
 }
 
-/* Mobile Phones */
 @media (max-width: 480px) {
   .page-header {
     padding: 10px 15px;
@@ -275,30 +269,6 @@ main {
   }
 }
 
-/* Sehr kleine Mobile Phones */
-@media (max-width: 360px) {
-  .impressum-container {
-    padding: 15px 10px;
-  }
-  
-  .impressum-title {
-    font-size: 1.4rem;
-  }
-  
-  .impressum-section {
-    padding: 12px;
-  }
-  
-  .section-title {
-    font-size: 1rem;
-  }
-  
-  .contact-item strong {
-    min-width: 70px;
-    font-size: 0.9rem;
-  }
-}
-
 @media (max-width: 465px) {
   .page-footer p {
     display: flex;
@@ -325,3 +295,27 @@ main {
     font-size: 16px; 
   }
 }
+
+@media (max-width: 360px) {
+  .impressum-container {
+    padding: 15px 10px;
+  }
+  
+  .impressum-title {
+    font-size: 1.4rem;
+  }
+  
+  .impressum-section {
+    padding: 12px;
+  }
+  
+  .section-title {
+    font-size: 1rem;
+  }
+  
+  .contact-item strong {
+    min-width: 70px;
+    font-size: 0.9rem;
+  }
+}
+
