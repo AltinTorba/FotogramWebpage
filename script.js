@@ -162,15 +162,16 @@ function updateNavigationButtons() {
 
 // Setzt Event-Listener auf
 function setupEventListeners() {
+  const dialog = document.getElementById('image-dialog');
   // Klick außerhalb des Dialogs schließt ihn (wird automatisch durch dialog-Element gehandelt)
   
   // Tastatur-Navigation
   document.addEventListener('keydown', function(event) {
-    const dialog = document.getElementById('image-dialog');
+    // const dialog = document.getElementById('image-dialog');
     if (dialog.open) {
-      if (event.key === 'Escape') {
-        // Wird automatisch durch dialog-Element gehandelt
-      }
+      // if (event.key === 'Escape') {
+      //   // Wird automatisch durch dialog-Element gehandelt
+      // }
       if (event.key === 'ArrowLeft') {
         prevImage();
       }
@@ -179,7 +180,18 @@ function setupEventListeners() {
       }
     }
   });
+
+  // Einfache Lösung - Click auf den Dialog (nicht den Content)
+  dialog.addEventListener('click', function(event) {
+    const dialog = document.getElementById('image-dialog');
+    if (event.target === dialog) {
+      dialog.close();
+      announceToScreenReader('Dialog geschlossen');
+    }
+  });
 }
 
-// Initialisierung wenn die Seite geladen ist
-document.addEventListener('DOMContentLoaded', init);
+
+
+// // Initialisierung wenn die Seite geladen ist
+// document.addEventListener('DOMContentLoaded', init);
