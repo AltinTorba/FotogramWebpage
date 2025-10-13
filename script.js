@@ -75,24 +75,23 @@ const GALLERY_ITEMS = [
 
 let currentImageIndex = 0;
 
-
 function renderGallery(){
     const GALLERY_REF = document.getElementById("gallery-container");
-
+    GALLERY_REF.innerHTML = '';
     for(let i=0; i<GALLERY_ITEMS.length; i++ ){ 
         GALLERY_REF.innerHTML += renderGalleryTemplate(i);
     }
 }
 
-function renderGalleryTemplate(i) {
+function renderGalleryTemplate(index) {
   return `
-        <div class="gallery-item" onclick="openDialog(${i})">
-            <img src="./imgs/img/${GALLERY_ITEMS[i].image}"
-                alt="${GALLERY_ITEMS[i].alt}"
+        <div class="gallery-item" onclick="openDialog(${index})">
+            <img src="./imgs/img/${GALLERY_ITEMS[index].image}"
+                alt="${GALLERY_ITEMS[index].alt}"
                 loading="lazy">
             <div style="display:none;" class="caption">
-                <h3>${GALLERY_ITEMS[i].title}</h3>
-                <p>${GALLERY_ITEMS[i].description}</p> 
+                <h3>${GALLERY_ITEMS[index].title}</h3>
+                <p>${GALLERY_ITEMS[index].description}</p> 
             </div>  
         </div>
         `;
@@ -181,15 +180,12 @@ function setupEventListeners() {
   });
 }
 
-
 function announceToScreenReader(message) {
   const announcer = document.getElementById('aria-live-announcer');
   if (announcer) {
     announcer.textContent = message;
   }
-  console.log('Screen Reader:', message);
 }
-
 
 function init() {
   renderGallery();
