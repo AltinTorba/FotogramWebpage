@@ -76,27 +76,26 @@ const GALLERY_ITEMS = [
 let currentImageIndex = 0;
 
 
-function init() {
-  renderGallery();
-  setupEventListeners();
-}
-
 function renderGallery(){
     const GALLERY_REF = document.getElementById("gallery-container");
 
     for(let i=0; i<GALLERY_ITEMS.length; i++ ){ 
-        GALLERY_REF.innerHTML += `
+        GALLERY_REF.innerHTML += renderGalleryTemplate(i);
+    }
+}
+
+function renderGalleryTemplate(i) {
+  return `
         <div class="gallery-item" onclick="openDialog(${i})">
             <img src="./imgs/img/${GALLERY_ITEMS[i].image}"
                 alt="${GALLERY_ITEMS[i].alt}"
                 loading="lazy">
-            <div style="display:none;" class class="caption">
+            <div style="display:none;" class="caption">
                 <h3>${GALLERY_ITEMS[i].title}</h3>
                 <p>${GALLERY_ITEMS[i].description}</p> 
             </div>  
         </div>
         `;
-    }
 }
 
 function openDialog(index) {
@@ -111,17 +110,20 @@ function openDialog(index) {
   
   dialog.showModal();
   updateNavigationButtons();
+  announceToScreenReader(`Bild geöffnet: ${item.title}`);
 }
 
 function closeDialog() {
   const dialog = document.getElementById('image-dialog');
   dialog.close();
+  announceToScreenReader('Dialog geschlossen');
 }
 
 function nextImage() {
   if (currentImageIndex < GALLERY_ITEMS.length - 1) {
     currentImageIndex++;
     updateDialogContent();
+    announceToScreenReader(`Nächstes Bild: ${GALLERY_ITEMS[currentImageIndex].title}`);
   }
 }
 
@@ -129,6 +131,7 @@ function prevImage() {
   if (currentImageIndex > 0) {
     currentImageIndex--;
     updateDialogContent();
+    announceToScreenReader(`Vorheriges Bild: ${GALLERY_ITEMS[currentImageIndex].title}`);
   }
 }
 
@@ -154,22 +157,45 @@ function updateNavigationButtons() {
 function setupEventListeners() {
   const dialog = document.getElementById('image-dialog');
   
+  if (!dialog) {
+    console.error('Dialog element not found!');
+    return;
+  }
+  
   document.addEventListener('keydown', function(event) {
     if (dialog.open) {
       if (event.key === 'ArrowLeft') {
         prevImage();
-      }
-      if (event.key === 'ArrowRight') {
+      } else if (event.key === 'ArrowRight') {
         nextImage();
+      } else if (event.key === 'Escape') {
+        closeDialog();
       }
     }
   });
 
   dialog.addEventListener('click', function(event) {
-    const dialog = document.getElementById('image-dialog');
     if (event.target === dialog) {
-      dialog.close();
-      announceToScreenReader('Dialog geschlossen');
+      closeDialog(); 
     }
   });
 }
+
+
+function announceToScreenReader(message) {
+  const announcer = document.getElementById('aria-live-announcer');
+  if (announcer) {
+    announcer.textContent = message;
+  }
+  console.log('Screen Reader:', message);
+}
+
+
+function init() {
+  renderGallery();
+  setupEventListeners();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  init();
+});

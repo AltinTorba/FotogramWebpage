@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -285,7 +286,7 @@ main {
   }
 
   .privacy-title {
-        font-size: 1.4rem;
+    font-size: 1.4rem;
   }
   
   .contact-item strong {
